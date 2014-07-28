@@ -516,6 +516,23 @@ function user_list() {
 	return $users;
 }
 
+//get the details of a field for every user
+function batchCheck($field)
+{
+	//get user list
+	$userList = user_list();
+	foreach ($userList as $userFile)
+	{
+		//if the file is not named empty
+		if($userFile != "empty")
+		{
+		//get the user info from the current user ($u) and store it in an array ($ui)
+		$userInfo = user_info($userFile);
+		echo $userInfo[$field];
+	}
+
+	}
+}
 /*
 8888888888 d8b 888 888                    d8b
 888        Y8P 888 888                    Y8P
