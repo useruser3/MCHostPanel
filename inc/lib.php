@@ -429,7 +429,7 @@ Y88b. .d88P      X88 Y8b.     888          X88
 */
 
 // Add a new user
-function user_add($user,$pass,$role,$home,$ram=512,$port=25565) {
+function user_add($user,$pass,$role,$home,$ram=512,$port=25565,$backup='NONE') {
 
 	// Prevent overwriting an existing user
 	if(is_file('data/users/' . strtolower(clean_alphanum($user)) . '.json')) {
@@ -443,7 +443,9 @@ function user_add($user,$pass,$role,$home,$ram=512,$port=25565) {
 		'role' => $role,
 		'home' => rtrim(strtr($home, "\\", '/'), '/'),
 		'ram'  => intval($ram),
-		'port' => intval($port)
+		'port' => intval($port),
+		'backup' => clean_alphanum($backup)
+		
 	);
 
 	// Write to file
@@ -489,7 +491,8 @@ function user_modify($user,$pass,$role,$home,$ram,$port)
 		'role' => $_POST['role'],
 		'home' => $_POST['dir'],
 		'ram'  => intval($_POST['ram']),
-		'port' => intval($_POST['port'])
+		'port' => intval($_POST['port']),
+		'backup' => clean_alphanum($_POST['backup'])
 	);
 	
 	// Write to file

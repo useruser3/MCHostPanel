@@ -76,6 +76,16 @@ user_modify($_POST['user'], $_POST['pass'], $_POST['role'], $_POST['dir'], $_POS
 								</div>
 			 			</div>
 			 			
+			 			<div id="backupArea">	
+							<h2>Server Backups:</h2>
+			 					<div class="controls">
+									<select name="backup" id="backup" class="span4">
+										<option value="NONE" selected>NONE</option>
+										<option value="DAILY">DAILY</option>
+										<option value="WEEKLY">WEEKLY</option>
+									</select>
+								</div>
+			 			</div>
 			 		</br></br></br>
 			 		
 			 		<button type="submit" class="btn btn-primary">Save Changes</button>

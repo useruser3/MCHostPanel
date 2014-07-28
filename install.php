@@ -3,7 +3,7 @@ require_once 'inc/lib.php';
 
 if ($_POST['user']) {
 	session_start();
-	user_add($_POST['user'], $_POST['pass'], 'admin', $_POST['dir'], $_POST['ram'], $_POST['port']);
+	user_add($_POST['user'], $_POST['pass'], 'admin', $_POST['dir'], $_POST['ram'], $_POST['port'], $_POST['backup']);
 	$_SESSION['user'] = clean_alphanum($_POST['user']);
 }
 
@@ -86,6 +86,18 @@ if ($_POST['user']) {
 					<span class="text-info">0 = No Server</span>
 				</div>
 			</div>
+			
+			<div class="control-group">
+					<label class="control-label" for="backup">Server Backups</label>
+
+					<div class="controls">
+						<select name="backup" id="backup" class="span4">
+							<option value="NONE" selected>NONE</option>
+							<option value="DAILY">DAILY</option>
+							<option value="WEEKLY">WEEKLY</option>
+						</select>
+					</div>
+				</div>
 		</div>
 		<div class="modal-footer">
 			<button class="btn btn-primary" type="submit">Install and Log In</button>

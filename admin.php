@@ -1,6 +1,5 @@
 <?php
 require_once 'inc/lib.php';
-
 session_start();
 if (!$_SESSION['user'] && !$user = user_info($_SESSION['user'])) {
 	// Not logged in, redirect to login page
@@ -22,7 +21,7 @@ if ($_POST['action'] == 'user-switch' && $_POST['user']) {
 
 // Add new user
 if ($_POST['action'] == 'user-add')
-	user_add($_POST['user'], $_POST['pass'], $_POST['role'], $_POST['dir'], $_POST['ram'], $_POST['port']);
+	user_add($_POST['user'], $_POST['pass'], $_POST['role'], $_POST['dir'], $_POST['ram'], $_POST['port'], $_POST['backup']);
 
 // Start a server
 if ($_POST['action'] == 'server-start') {
@@ -179,6 +178,17 @@ if ($_POST['action'] == 'server-stop')
 						<select name="role" id="role" class="span4">
 							<option value="user" selected>User</option>
 							<option value="admin">Administrator</option>
+						</select>
+					</div>
+				</div>
+			<div class="control-group">
+					<label class="control-label" for="backup">Server Backups</label>
+
+					<div class="controls">
+						<select name="backup" id="backup" class="span4">
+							<option value="NONE" selected>NONE</option>
+							<option value="DAILY">DAILY</option>
+							<option value="WEEKLY">WEEKLY</option>
 						</select>
 					</div>
 				</div>
